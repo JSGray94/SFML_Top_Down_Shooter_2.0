@@ -1,13 +1,17 @@
 #include "Game.h"
+#include "TextureHolder.h"
 
 //The constructor for the game class.
 Game::Game()
 	: mWindow(sf::VideoMode(1366, 768), "Top Down Shooter")
+	, mTexture()
 	, mPlayer()
 {
-	mPlayer.setRadius(40.0f);
+	TextureHolder textures;
+	textures.load(Textures::Airplane, "res/sprite.png");
+
+	mPlayer.setTexture(textures.get(Textures::Airplane));
 	mPlayer.setPosition(100, 100);
-	mPlayer.setFillColor(sf::Color::Magenta);
 }
 
 //The main run method.
